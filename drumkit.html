@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Drum Kit</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/drumkit.css">
+
+</head>
+
+<body>
+<style media="screen">
+  ody {
+    text-align: center;
+    background-color: #283149;
+  }
+
+  h1 {
+    font-size: 5rem;
+    color: #DBEDF3;
+    font-family: "Arvo", cursive;
+    text-shadow: 3px 0 #DA0463;
+
+  }
+
+  footer {
+    color: #DBEDF3;
+    font-family: sans-serif;
+  }
+
+  .w {
+  background-image: url('css/crash.png');
+  }
+
+  .a {
+  background-image: url('css/kick.png');
+  }
+
+  .s {
+
+    background-image: url('css/snare.png');
+  }
+
+  .d {
+
+    background-image: url('css/tom1.png');
+  }
+
+  .j {
+
+    background-image: url('css/tom2.png');
+  }
+  .z {
+
+    background-image: url('css/tom2.png');
+  }
+  .x {
+
+    background-image: url('css/tom1.png');
+  }
+  .r{
+
+    background-image: url('css/tom4.png');
+  }
+  .f {
+
+    background-image: url('css/tom2.png');
+  }
+  .c {
+
+    background-image: url('css/crash.png');
+  }
+
+  .k {
+
+    background-image: url('css/tom3.png');
+  }
+
+  .l {
+
+    background-image: url('css/tom4.png');
+  }
+  .q {
+
+    background-image: url('css/kick.png');
+  }
+  .set {
+    margin: 10% auto;
+  }
+
+  .game-over {
+    background-color: red;
+    opacity: 0.8;
+  }
+
+  .pressed {
+    box-shadow: 0 3px 4px 0 #DBEDF3;
+    opacity: 0.5;
+  }
+
+  .red {
+    color: red;
+  }
+
+  .drum {
+    outline: none;
+    border: 6px solid #404B69;
+    font-size: 1.5rem;
+    font-family: 'Arvo', cursive;
+    line-height: 1;
+    font-weight: 200;
+    color: #DA0463;
+    text-shadow: 3px 0 #DBEDF3;
+    border-radius: 15px;
+    display: inline-block;
+    width: 88px;
+    height: 80px;
+    text-align: center;
+    margin: 8px;
+    background-color: white;
+  }
+
+</style>
+  <h1 id="title">Drum 🥁 Kit</h1>
+  <div class="set">
+      <button class="q drum">q</button>
+      <button class="f drum">f</button>
+      <button class="r drum">r</button>
+      <button class="c drum">c</button>
+      <button class="x drum">x</button>
+      <button class="z drum">z</button>
+
+    <button class="w drum">w</button>
+    <button class="a drum">a</button>
+    <button class="s drum">s</button>
+    <button class="d drum">d</button>
+    <button class="j drum">j</button>
+    <button class="k drum">k</button>
+    <button class="l drum">l</button>
+  </div>
+
+
+  <footer>
+    @ The Foxy WebForge
+  </footer>
+  <script>
+  // dtecting button press
+  var numberofdrum = document.querySelectorAll(".drum").length;
+  for(var i=0; i<numberofdrum; i++){
+    document.querySelectorAll(".drum")[i].addEventListener("click" , function() {
+      var buttominnerHtml = this.innerHTML;
+  makesound(buttominnerHtml);
+  animation(buttominnerHtml);
+
+
+    });
+  }
+
+  document.addEventListener("keypress" , function (event) {
+    makesound(event.key);
+    animation(event.key);
+  });
+
+  function makesound(key) {
+    switch (key) {
+      case "q":
+        var c = new Audio('sounds/q.wav');
+        c.play();
+        break;
+      case "w":
+        var cr = new Audio('sounds/crash.mp3');
+        cr.play();
+        break;
+      case "a":
+        var akick = new Audio('sounds/kick-bass.mp3');
+        akick.play();
+        break;
+
+        case "c":
+        var akic = new Audio('sounds/c.wav');
+        akic.play();
+        break;
+
+
+        case "f":
+        var ick = new Audio('sounds/f.wav');
+        ick.play();
+        break;
+
+
+        case "r":
+        var sdk = new Audio('sounds/r.wav');
+        sdk.play();
+        break;
+
+
+        case "x":
+        var ic = new Audio('sounds/x.wav');
+        ic.play();
+        break;
+
+
+        case "z":
+        var ak = new Audio('sounds/z.mav');
+        ak.play();
+        break;
+
+
+      case "s":
+        var a = new Audio('sounds/snare.mp3');
+        a.play();
+
+        break;
+      case "d":
+        var dio = new Audio('sounds/tom-1.mp3');
+        dio.play();
+        break;
+
+      case "j":
+        var io = new Audio('sounds/tom-2.mp3');
+        io.play();
+        break;
+      case "k":
+        var udio = new Audio('sounds/tom-3.mp3');
+        udio.play();
+        break;
+      case "l":
+        var o = new Audio('sounds/tom-4.mp3');
+        o.play();
+        break;
+      default:
+        console.log(key);
+
+  }
+  }
+  function animation(currentkey) {
+  var activebutton =   document.querySelector("." + currentkey);
+    activebutton.classList.add("pressed");
+    setTimeout(function () {
+      activebutton.classList.remove("pressed");
+
+    } , 1000);
+  }
+
+  </script>
+
+</body>
+
+</html>

@@ -19,6 +19,9 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/signup.html");
 
 });
+
+
+
 // this post file is connected to the form tag of our signup.html in
 // which we have specified action and method
 // this file accepts the data and post it
@@ -48,6 +51,7 @@ app.post("/", function(req, res) {
   const request = https.request(url, options, function (response) {
     if(response.statusCode === 200){
       res.sendFile(__dirname+"/success.html");
+
     }
     else {
       res.sendFile(__dirname+"/failure.html");
@@ -64,6 +68,15 @@ app.post("/failure", function(req, res) {
   res.redirect("/");
 });
 
+app.post("/simon", function(req, res) {
+  res.sendFile(__dirname+"/simon.html");
+});
+app.post("/drumkit", function(req, res) {
+  res.sendFile(__dirname+"/drumkit.html");
+});
+app.post("/pitch", function(req, res) {
+  res.sendFile(__dirname+"/dice.html");
+});
 app.listen(process.env.PORT || 3000, function() {
   console.log("Server is running in port 3000");
 });
